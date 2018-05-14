@@ -1,0 +1,6 @@
+E:\_cs\mp4\Media Foundation .Net\ShoutCast-2015\IcyScheme\bin\x64\Debug\IcyScheme.dll
+E:\_cs\mp4\Media Foundation .Net\ShoutCast-2015\IcyScheme\bin\x64\Debug\IcyScheme.pdb
+E:\_cs\mp4\Media Foundation .Net\ShoutCast-2015\IcyScheme\bin\x64\Debug\MediaFoundation.dll
+E:\_cs\mp4\Media Foundation .Net\ShoutCast-2015\IcyScheme\obj\x64\Debug\IcyScheme.dll
+E:\_cs\mp4\Media Foundation .Net\ShoutCast-2015\IcyScheme\obj\x64\Debug\IcyScheme.pdb
+E:\_cs\mp4\Media Foundation .Net\ShoutCast-2015\IcyScheme\obj\x64\Debug\IcyScheme-2015.csprojResolveAssemblyReference.cache

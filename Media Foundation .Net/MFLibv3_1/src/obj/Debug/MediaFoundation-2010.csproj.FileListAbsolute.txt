@@ -1,0 +1,6 @@
+E:\_cs\mp4\Media Foundation .Net\MFLibv3_1\src\bin\Debug\MediaFoundation.dll
+E:\_cs\mp4\Media Foundation .Net\MFLibv3_1\src\bin\Debug\MediaFoundation.pdb
+E:\_cs\mp4\Media Foundation .Net\MFLibv3_1\src\obj\Debug\MediaFoundation.dll
+E:\_cs\mp4\Media Foundation .Net\MFLibv3_1\src\obj\Debug\MediaFoundation.pdb
+E:\_cs\mp4\Media Foundation .Net\LIB\MediaFoundation.dll
+E:\_cs\mp4\Media Foundation .Net\LIB\MediaFoundation.pdb

@@ -1,0 +1,10 @@
+E:\_cs\mp4\Media Foundation .Net\ShoutCast-2015\Player\bin\x64\Debug\ShoutCastPlayer.exe.config
+E:\_cs\mp4\Media Foundation .Net\ShoutCast-2015\Player\bin\x64\Debug\ShoutCastPlayer.exe
+E:\_cs\mp4\Media Foundation .Net\ShoutCast-2015\Player\bin\x64\Debug\ShoutCastPlayer.pdb
+E:\_cs\mp4\Media Foundation .Net\ShoutCast-2015\Player\bin\x64\Debug\MediaFoundation.dll
+E:\_cs\mp4\Media Foundation .Net\ShoutCast-2015\Player\obj\x64\Debug\MF_BasicPlayback.Form1.resources
+E:\_cs\mp4\Media Foundation .Net\ShoutCast-2015\Player\obj\x64\Debug\MF_BasicPlayback.fmURL.resources
+E:\_cs\mp4\Media Foundation .Net\ShoutCast-2015\Player\obj\x64\Debug\IcyPlayer-2015.csproj.GenerateResource.Cache
+E:\_cs\mp4\Media Foundation .Net\ShoutCast-2015\Player\obj\x64\Debug\ShoutCastPlayer.exe
+E:\_cs\mp4\Media Foundation .Net\ShoutCast-2015\Player\obj\x64\Debug\ShoutCastPlayer.pdb
+E:\_cs\mp4\Media Foundation .Net\ShoutCast-2015\Player\obj\x64\Debug\IcyPlayer-2015.csprojResolveAssemblyReference.cache

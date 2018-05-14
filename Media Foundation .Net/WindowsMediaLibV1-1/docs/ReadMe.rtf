@@ -1,0 +1,140 @@
+{\rtf1\ansi\ansicpg1252\deff0\deflang1033\deflangfe1033{\fonttbl{\f0\fswiss\fprq2\fcharset0 Arial;}{\f1\froman\fprq2\fcharset2 Symbol;}{\f2\fmodern\fprq1\fcharset0 Courier New;}}
+{\colortbl ;\red0\green0\blue255;\red43\green145\blue175;\red163\green21\blue21;\red0\green128\blue0;}
+{\stylesheet{ Normal;}{\s1 heading 1;}{\s2 heading 2;}{\s3 heading 3;}}
+{\*\generator Msftedit 5.41.21.2508;}\viewkind4\uc1\pard\keepn\s1\ri-1620\sb240\sa60\kerning32\b\f0\fs32 WindowsMediaLib Version 1.1\par
+\pard\nowidctlpar\ri-1620\sb100\sa100\kerning0\b0\fs24 Version 1.0 of the WindowsMediaLib library is the result of work done by:\par
+\pard David Wohlferd ({\field{\*\fldinst{HYPERLINK "mailto:snarfle@users.SourceForge.net" }}{\fldrslt{\cf1\ul snarfle@users.SourceForge.net}}}\cf0\ulnone\f0\fs24 )\par
+Bryce Kahle ({\field{\*\fldinst{HYPERLINK "mailto:bwkahle@users.sourceforge.net" }}{\fldrslt{\cf1\ul bwkahle@users.sourceforge.net}}}\cf0\ulnone\f0\fs24 ) \par
+\par
+\b\fs26 Purpose of this library - What it is, what it isn't\par
+\pard\nowidctlpar\ri-1620\sb100\sa100\b0\fs24 The purpose of this library is to allow access to Windows Media Format functionality from within .NET.  Additionally, it provides definitions for the waveIn*, waveOut*, and MMIO* methods of the Windows Multimedia SDK.\par
+Reviewing the source code will show that there is very little executable code in this library.  There are a few helper functions (mostly in WMUtils.cs), but everything else in the library is just definitions to allow access to the code in Microsoft\rquote s Windows Media DLLs.\par
+\pard\keepn\s3\ri-1620\sb240\sa60\b\fs26 Licensing questions\par
+\pard\nowidctlpar\ri-1620\sb100\sa100\b0\fs24 This library is licensed under GNU LESSER GENERAL PUBLIC LICENSE, Version 2.1.  See license.txt for the complete text.\par
+\pard\keepn\s3\ri-1620\sb240\sa60\b\fs26 Supported platforms, languages\fs20\par
+\pard\nowidctlpar\ri-1620\sb100\sa100\b0\fs22 This library has been tested from C#, and should work from other .NET compatible languages..  With v1.1, 64bit should work as well in c# as it does in c++ (see http://msdn.microsoft.com/en-us/library/aa391570(VS.85).aspx). \par
+\pard\keepn\s3\ri-1620\sb240\sa60\b\fs26 Where to find the documentation\fs20\par
+\pard\b0\fs24 Since the purpose of this library is to allow for the calling of the Windows Media interfaces, the primary source of documentation is MSDN.  You can find Windows Media documentation (today at least) at http://msdn.microsoft.com/en-us/library/aa387410(VS.85).aspx.  The interfaces are documented in the \ldblquote Interfaces\rdblquote  section, but there is other documentation there that will help you understand the design of WM.\par
+Additionally, there are definitions for the waveIn*, waveOut*, and MMIO* methods, which are documented at http://msdn.microsoft.com/en-us/library/ms712636(VS.85).aspx.  The names of the externs are of the form waveIn.Open for waveInOpen, waveOut.Close for waveOutClose, etc.  Check out the samples for typical usage.\par
+The few helper classes that have been added are documented below in \ldblquote Helper Classes\rdblquote .\par
+\pard\keepn\s3\ri-1620\sb240\sa60\b\fs26 Using WindowsMediaLib with DirectShowLib\par
+\pard\nowidctlpar\ri-1620\sb100\sa100\b0\fs24 In general, these two libraries should work well together.  If you are using both, make sure you do NOT use \ldblquote using WindowsMediaLib.Defs;\rdblquote  as all items in that namespace are already defined in DirectShowLib.\par
+\pard\keepn\s3\ri-1620\sb240\sa60\b\fs26 Differences between MSDN docs and using our library\par
+\pard\nowidctlpar\ri-1620\sb100\sa100\b0\fs24 It most cases, you should expect that you call the interface methods the same way MSDN says it should be called.  The primary differences between the library\rquote s definitions and those found on MSDN are related to return codes (See \ldblquote Error handling\rdblquote  below) and places where MSDN documents methods parameters as int, but then says the content of the int is some enum.  The definition in the library is changed to be the enum, so Visual Studio\rquote s intelli-sense will offer up the legal values while typing code.\par
+The names of the structures and enum have often been changed to use a more .NET friendly style: AM_SAMPLE2_PROPERTIES -> AMSample2Properties.  Note that the original C++ structure or enum name is provided above the declaration.  If there is some specific declaration you need to find, do a scan of the library\rquote s source files for the name.\par
+\pard Also see the sections below on \ldblquote How and when to use Marshal.ReleaseComObject()\rdblquote  and \ldblquote Releasing memory to avoid leaks (Marshal.FreeCoTaskMem, FreeWMMediaType).\rdblquote\par
+\pard\keepn\s3\ri-1620\sb240\sa60\b\fs26 Error handling\par
+\pard\nowidctlpar\ri-1620\sb100\sa100\b0\fs24 As a general statement, there are two different ways that a function can report whether it succeeded in performing the task it has been called to perform:\par
+\pard\nowidctlpar\fi-360\li720\ri-1620\sb100\sa100\tx720 1)\tab It can use a return value to indicate success or failure (PreserveSig(true))\par
+\pard\nowidctlpar\fi-360\li720\ri-1620\sb100\sa100 2)\tab It can throw an exception (PreserveSig(false))\par
+\pard\nowidctlpar\ri-1620\sb100\sa100 Nearly all of the Windows methods, and virtually all COM methods use #1.  However, .Net is generally based around #2.  When the code was being written for the DirectShowLib library, the decision was made to use return values.  This was consistent with the MSDN docs as well as being more consistent with any c++ sample code that people may use for reference.\par
+In this library, however, we\rquote ve gone the other way.  If you call a method and that method fails, it will throw an exception.  This was done for a couple of reasons:\par
+\pard\nowidctlpar\fi-360\li720\ri-1620\sb100\sa100\tx720 1)\tab It is more c#-like.\par
+2)\tab It makes for generally cleaner code.\par
+\pard\nowidctlpar\fi-360\li720\ri-1620\sb100\sa100 3)\tab Since most other .Net calls are already throwing exceptions on errors, this avoids having to do double error checking.\par
+\pard\nowidctlpar\ri-1620\sb100\sa100 However, there is a cost.  While performance is the same for calls that succeed, when the method must throw an exception, the performance is slower using (PreserveSig(false)) than it is for (PreserveSig(true)).\par
+In most cases, this difference in performance is not likely to be an issue.  Usually if something is throwing an exception, the task in process ends up getting aborted anyway.  However it could be an issue if you end up throwing many exceptions somewhere deep inside some inner-most loop.\par
+A couple other notes about exceptions:\par
+\pard\nowidctlpar\fi-360\li720\ri-1620\sb100\sa100\tx720\f1\'b7\tab\i\f0 Calling COM interfaces\i0 : Since the majority of methods in this library are declared \b without\b0  PreserveSig (or with PreserveSig(false)).  This means that .NET will check the return code for you, and turn failure codes into exceptions.  So, it isn\rquote t necessary (indeed it isn\rquote t possible) to check the return codes after each call.  All you need to do is catch the exceptions.\par
+\pard\nowidctlpar\fi-360\li720\ri-1620\sb100\sa100\f1\'b7\tab\i\f0 Implementing COM interfaces\i0 : When you implement interfaces in c# (like IWMReaderCallback in the AudioPlayer sample), you can either define the interface to return an int and return the HRESULT (ie using PreserveSig), or you can do what this library does and define them as void.  In that case, you simply throw exceptions to indicate errors.  .Net will turn them into the appropriate COM error.\par
+\pard\nowidctlpar\li720\ri-1620\sb100\sa100 This works very well with point #1.  If the code implementing the COM object doesn\rquote t explicitly catch errors from the WM calls it makes, they get propagated up to the COM interface, turned into HRESULTs and sent back to the caller.\par
+\pard\nowidctlpar\ri-1620\sb100\sa100 Turning c++ code into c# core routinely drops several hundred lines of code (and several levels of indention) when removing all the \ldblquote if FAILED\rdblquote  code.\par
+Here is some code that might be useful for turning exceptions into HRESULTS or error strings:\par
+\pard\f2\fs20    \cf1 catch\cf0  (\cf2 Exception\cf0  e)\par
+   \{\par
+      \cf1 int\cf0  hr = \cf2 Marshal\cf0 .GetHRForException(e);\par
+      \cf1 string\cf0  s = \cf2 WMError\cf0 .GetErrorText(hr);\par
+\par
+      \cf1 if\cf0  (s == \cf1 null\cf0 )\par
+      \{\par
+         s = e.Message;\par
+      \}\par
+      \cf1 else\par
+\cf0       \{\par
+         s = \cf1 string\cf0 .Format(\cf3 "\{0\} (\{1\})"\cf0 , s, e.Message);\par
+      \}\par
+\par
+\pard\li720\cf2 MessageBox\cf0 .Show(\par
+\cf2    \cf1 string\cf0 .Format(\cf3 "0x\{0:x\}: \{1\}"\cf0 , hr, s), \par
+\cf3    "Exception"\cf0 ,\par
+\cf3    \cf2 MessageBoxButtons\cf0 .OK,\par
+\cf2    MessageBoxIcon\cf0 .Error);\par
+\pard    \}\par
+\par
+\pard\nowidctlpar\ri-1620\sb100\sa100\f0\fs24 Be aware that the waveIn*, waveOut*, and MMIO* methods do NOT throw exceptions.  In order for PreserveSig(false) to cause exceptions to be thrown, the values returned must be less than zero.  Unfortunately, the values returned from those methods are NOT less than zero.\par
+\pard\keepn\s3\ri-1620\sb240\sa60\b\fs26 How and when to use Marshal.ReleaseComObject()\par
+\pard\nowidctlpar\ri-1620\sb100\sa100\b0\fs24 .NET has a built-in limitation when handling COM methods.  This problem affects any .NET class calling COM, not just our library.  The problem description is rather involved, but boils down to two key facts:\par
+1) Objects in .NET aren't released as soon as they go out of scope.  You have to wait for the Garbage Collector to free them.  As a result, you may get "in use" errors for items you thought should be released.  GC.Collect may help with this.  Also, you can use Marshal.ReleaseComObject.  However, that may introduce other problems (see #2).\par
+2) If you create a COM object, then do \par
+\pard\nowidctlpar\ri-1620 IGraphBuilder  graphBuilder = (IGraphBuilder) new FilterGraph();\par
+IMediaControl  imc = graphBuilder as IMediaControl;\par
+\pard Calling Marshal.ReleaseComObject on either graphBuilder or imc will invalidate BOTH graphBuilder and imc.  For a good article on this, read Chris Brumme's weblog at http://blogs.msdn.com/cbrumme/archive/2003/04/16/51355.aspx.  The net result is that if you need either imc or graphBuilder to stay available, you mustn\rquote t free either of them.  When you are done with both, free only one of them.\par
+\pard\keepn\s3\ri-1620\sb240\sa60\b\fs26 Releasing memory to avoid leaks (Marshal.FreeCoTaskMem, FreeWMMediaType)\par
+\pard\nowidctlpar\ri-1620\sb100\sa100\b0\fs24 Some of the interfaces in Windows Media allocate memory that needs to be released by the caller.  Make sure you read the MSDN docs for any methods you are calling to ensure that you know when you are required to release memory.  Be aware that memory allocated by COM objects isn't automatically freed by the Garbage Collector like memory allocated for you by most .NET functions.\par
+As an example, look at IMediaSample::GetMediaType.  The memory for the class returned by this method can be released with WMUtils.FreeWMMediaType().\par
+\b Profiles & LoadProfileByID vs LoadProfileByData & GenProfile\par
+\b0 There are several ways to configure the WM Writer (either the DS filter or the WM object).  The easiest (the one used most commonly in the samples) is to use IWMProfileManager::LoadProfileByID.  This method takes a Guid, which gets matched with the entries in %windir%\\WMSysPr9.prx, and is used to specify various parameters of the output (BPS, video size, etc).\par
+Unfortunately, WMSysPr9.prx doesn't have very many profiles defined.\par
+The hardest way is to use methods off IWMProfile to create streams and sets the values.  None of the samples do this.\par
+Probably the best way is to use the GenProfile tool (from the Windows Media Format sdk) which as a UI you can use to create a profile (basically an xml file), then use IWMProfileManager::LoadProfileByData to configure the WM Writer from that text.  You can see this being done in DESCombine (look at the RenderToWM method and how it uses the sProfile parameter).\par
+One essential fact to keep in mind: If the profile is configured with 2 streams (ie Audio & video), you MUST connect both an audio and a video stream to the writer, or the writer will fail to write.  This is true no matter which of the three approaches you use.  So, if you use a Guid to call LoadProfileByID, make sure you know what streams must be connected.\b\fs26\par
+\pard\keepn\s3\ri-1620\sb240\sa60 Helper Classes\par
+\pard\nowidctlpar\ri-1620\sb100\sa100\b0\fs24 While the library primarily just provides mappings to the Windows Media interfaces, there are a few helper functions we have added that may be useful:\par
+\b NsResults\b0  \endash  This class consists of Windows Media specific error and status codes.  It is based on NsError.h.  Note that it does NOT include regular COM error codes such as might be found in winerror.h.  These codes can be used to check for known error conditions:\par
+\pard\ri-1620 hr = iSomething.DoSomething();\par
+\cf1 if\cf0  (hr == NsResults.E_NotConnected)\par
+   \cf4 // Try connecting\par
+\pard\nowidctlpar\ri-1620\sb100\sa100\cf0\b WMUtils\b0  \endash  This class contains the definitions for all the WM methods that aren\rquote t members of interfaces (ie WMCreateReader, WMCreateIndexer, etc).  It also contains\par
+FreeWMMediaType \endash  This method should be called to release any AMMediaType structures.  Do not depend on the Garbage Collector to correctly release AMMediaType structures.  It is the .NET implementation of the MSDN function DeleteMediaType().\par
+\pard\nowidctlpar\sb100\sa100\b WMError\b0  \endash  This class contains two methods.  \par
+ThrowExceptionForHR is a wrapper for Marshal.ThrowExceptionForHR, but additionally provides descriptions for any Windows Media specific error messages.  Note that you do not have to check for negative values before calling this method.  If the hr value is not a fatal error, no exception will be thrown:\par
+\pard\f2 hr = iSomething.DoSomething();\par
+WMError.ThrowExceptionForHR(hr);\par
+\par
+\pard\nowidctlpar\sb100\sa100\f0 GetErrorText retrieves the Windows Media error code text for the given error code.\par
+\b COMBase\b0  \endash  This class is intended to be the parent of classes that implement COM interfaces.  It can also be used as a parent to classes that merely call COM classes.  It also contains definitions for the common COM errors (E_Fail, E_Abort, etc).  Note: There is no requirement to use this class, but it can be helpful.\par
+Succeeded: Checks to see if an HRESULT code is not a failure code (ie >= 0).  This isn\rquote t generally useful since most methods in the library with throw exceptions rather than returning HRESULTs.\par
+Failed: Checks to see if an HRESULT code is a failure code (ie < 0).  This isn\rquote t generally useful since most methods in the library with throw exceptions rather than returning HRESULTs.\par
+SafeRelease: Calls Dispose or Marshal.ReleaseComObject against objects.  Checks for null.\par
+\b AMToString\b0  \endash  This class turns mediatype structures and Guids into human readable strings.\par
+\pard\nowidctlpar\ri-1620\sb100\sa100 AMMediaTypeToString \endash  Produces a human readable form of an AMMediaType\par
+MediaTypeToString \endash  Produces a human readable form of a MediaType\par
+MediaSubTypeToString \endash  Produces a human readable form of a MediaSubType\par
+MediaFormatTypeToString \endash  Produces a human readable form of a MediaFormatType\par
+\b Constants\b0  \endash  This class contains definitions for the (many) strings WM uses; most of them attribute strings of some sort.\par
+\pard\b FourCC\b0  - This class is useful for processing 4cc\rquote s (see http://msdn2.microsoft.com/en-us/library/ms783788.aspx for a discussion of some of the basics of 4 character codes).  It contains methods for converting from ints to 4cc\rquote s and Guids and bytes.\par
+\pard\nowidctlpar\sb100\sa100\b WmInt\b0  & \b WmShort\b0  \endash  These class is a wrapper for ints and shorts.  The only time you should need to use this class is if you are dealing with parameters to (or from) WM that are \ldblquote out int\rdblquote , but \ldblquote can be null.\rdblquote   If you are implementing a method that has such a data type, you will want to check the value to see if it is null, then use the Assign() method to assign a value.\par
+\pard\keepn\s3\ri-1620\sb240\sa60\b\fs26 Samples\par
+\pard\b0\fs24 There are a few samples available to show how to perform various common tasks.  Note that these samples should not be considered commercial quality, but can form the basis of your own code.  The samples, along with descriptions are in a separate download at (http://sourceforge.net/project/showfiles.php?group_id=229696).\par
+\pard\keepn\s3\ri-1620\sb240\sa60\b\fs26 Using untested interfaces\par
+\pard\nowidctlpar\ri-1620\sb100\sa100\b0\fs24 The WindowsMediaLib contains interfaces for virtually all of Windows Media (over 100 interfaces).\par
+\pard\nowidctlpar\ri-1620 1) Checking to see that the method is defined correctly according to the MSDN docs\par
+2) Change int to enum where needed\par
+3) Add any needed MarshalAs\par
+4) Verify that any needed structs are correctly defined \par
+5) Remove unneeded "ref", add needed "out"\par
+6) (Where possible) remove IntPtr and use actual structs or classes\par
+7) Where necessary, create custom marshalers for passing structs\par
+8) Write code that calls the method, making sure that parameters that are documented to accept null, do so\par
+\pard\nowidctlpar\ri-1620\sb100\sa100 When 1-8 have been done for all the methods in an interface, the work is submitted to a second developer for review.  When reviewed, the interface is considered tested.\par
+However, it may be that you need to use an interface that hasn't been tested yet.  All the untested interfaces, structs and enum are included in the source, but are wrapped within:\par
+#if ALLOW_UNTESTED_INTERFACES\par
+#endif\par
+Release builds of our library do not expose these interfaces.  If you want to enable all the methods, you can use #define in specific source files or globally with project properties to define this constant, then build your own copy of the library.  However, don't be surprised if some of the methods/interfaces that haven't been tested don't work correctly.  Also, when we eventually do test the method, we may modify the declaration.\par
+\pard\keepn\s3\ri-1620\sb240\sa60\b\fs26 The plan for additional interfaces\par
+\pard\nowidctlpar\ri-1620\sb100\sa100\b0\fs24 As of v1.1, no more interfaces are planned to be included/tested.  At one time, it was hoped that the DRM methods could be implemented from .Net.  However, between licensing issues (to use DRM, you MUST link in a .lib file from MS into your .exe), and technical issues (the contents of that lib are undocumented, so reproducing the functionality in .Net without help from MS is all but impossible), the task just proved to be too much.\par
+\pard\keepn\s3\ri-1620\sb240\sa60\b\fs26 Reporting bugs\par
+\pard\b0\fs24 Bugs in this library should be reported to https://sourceforge.net/tracker/?group_id=229696&atid=1077866.\par
+Note that only bugs in the library, samples, or docs that are part of this project should be reported here.  Bugs in Windows Media itself must be reported to Microsoft.\par
+\pard\keepn\s3\ri-1620\sb240\sa60\b\fs26 Links for help\par
+\pard\b0\fs24 Your best place to start is the MSDN docs (see links under "Where to find the documentation").  If your question is about Windows Media in general, you might want to post to one of Microsoft's newsgroups (currently at http://www.microsoft.com/communities/newsgroups/en-us/default.aspx?dg=microsoft.public.win32.programmer.mmedia&cat=en_US_8a1b7e9b-495c-41fd-90ae-95f504a5333d&lang=en&cr=US).  If your question is specific to this library, you should post your question post in the \ldblquote Open Discussion\rdblquote  forum here: http://sourceforge.net/forum/forum.php?forum_id=460697.\par
+\pard\keepn\s3\ri-1620\sb240\sa60\b\fs26 Offering to help\par
+\pard\nowidctlpar\ri-1620\b0\fs24 There are several things that you could do to help this project.  These would be the best ways of saying thank you:\par
+\par
+\pard 1)\tab Find a way to test all the methods of one of the remaining interfaces.  You can see the existing test code at http://windowsmedianet.cvs.sourceforge.net/windowsmedianet/wmlib/test/ and the list of remaining interfaces to test is in interfaces.txt.\par
+2)\tab Report any errors (ie methods that don\rquote t work, enums missing values, incorrectly formatted structures, doc errors etc) that you find.  Don\rquote t just make the corrections in your code, share the improvements with everyone.\par
+\fs20 3)\tab\fs24 Create samples.  We *aren\rquote t* looking for end-all be-all samples that exercise every interface in a single cs file.  We *are* looking for code that illustrates specific concepts, in short, easy to understand and copy routines that people can use in their own code.\par
+\fs20 4)\tab\fs24 If your time or training don\rquote t allow you to do any of the above, you can always just stop by the forum and say thanks.  http://sourceforge.net/forum/forum.php?forum_id=829805 \par
+\pard\nowidctlpar\ri-1620\fs20\par
+}
+ 

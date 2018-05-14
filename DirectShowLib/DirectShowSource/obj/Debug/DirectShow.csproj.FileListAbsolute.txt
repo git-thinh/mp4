@@ -1,0 +1,9 @@
+E:\_cs\mp4\DirectShowSource\bin\Debug\DirectShow.exe
+E:\_cs\mp4\DirectShowSource\bin\Debug\DirectShow.pdb
+E:\_cs\mp4\DirectShowSource\bin\Debug\Interop.QuartzTypeLib.dll
+E:\_cs\mp4\DirectShowSource\obj\Debug\DirectShow.csprojResolveAssemblyReference.cache
+E:\_cs\mp4\DirectShowSource\obj\Debug\DirectShow.Form1.resources
+E:\_cs\mp4\DirectShowSource\obj\Debug\DirectShow.Form2.resources
+E:\_cs\mp4\DirectShowSource\obj\Debug\DirectShow.csproj.GenerateResource.Cache
+E:\_cs\mp4\DirectShowSource\obj\Debug\DirectShow.exe
+E:\_cs\mp4\DirectShowSource\obj\Debug\DirectShow.pdb

@@ -1,0 +1,22 @@
+V 1.1 Minor updates November 30, 2008
+
+Fix some 64bit issues.  However, see http://msdn.microsoft.com/en-us/library/aa391570(VS.85).aspx
+Add support for mixer* methods from http://msdn.microsoft.com/en-us/library/ms712636(VS.85).aspx
+
+No further interfaces are planned for this library.  At one time, it was hoped that the DRM methods 
+could be implemented from .Net.  However, between licensing issues (to use DRM, you MUST link in a 
+.lib file from MS into your .exe), and technical issues (the contents of that lib are undocumented, 
+so reproducing the functionality in .Net without help from MS is all but impossible), the task just 
+proved to be too much.
+
+
+-----------------------------------------------------------------
+V 1.0 Original release September 24, 2008
+
+
+106 Interfaces defined
+84 Interfaces tested 
+29 methods defined
+24 methods tested
+
+6 Samples

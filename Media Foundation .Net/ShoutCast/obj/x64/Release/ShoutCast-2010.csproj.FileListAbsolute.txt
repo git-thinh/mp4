@@ -1,0 +1,11 @@
+E:\_cs\mp4\Media Foundation .Net\ShoutCast\bin\x64\Release\PlaybackFX.exe.config
+E:\_cs\mp4\Media Foundation .Net\ShoutCast\bin\x64\Release\PlaybackFX.exe
+E:\_cs\mp4\Media Foundation .Net\ShoutCast\bin\x64\Release\PlaybackFX.pdb
+E:\_cs\mp4\Media Foundation .Net\ShoutCast\bin\x64\Release\MediaFoundation.dll
+E:\_cs\mp4\Media Foundation .Net\ShoutCast\bin\x64\Release\MediaFoundation.Extension.dll
+E:\_cs\mp4\Media Foundation .Net\ShoutCast\obj\x64\Release\ShoutCast-2010.csprojResolveAssemblyReference.cache
+E:\_cs\mp4\Media Foundation .Net\ShoutCast\obj\x64\Release\MF_BasicPlayback.Form1.resources
+E:\_cs\mp4\Media Foundation .Net\ShoutCast\obj\x64\Release\MF_BasicPlayback.fmURL.resources
+E:\_cs\mp4\Media Foundation .Net\ShoutCast\obj\x64\Release\ShoutCast-2010.csproj.GenerateResource.Cache
+E:\_cs\mp4\Media Foundation .Net\ShoutCast\obj\x64\Release\PlaybackFX.exe
+E:\_cs\mp4\Media Foundation .Net\ShoutCast\obj\x64\Release\PlaybackFX.pdb

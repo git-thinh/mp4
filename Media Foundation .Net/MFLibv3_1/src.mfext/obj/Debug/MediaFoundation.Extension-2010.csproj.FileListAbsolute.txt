@@ -1,0 +1,9 @@
+E:\_cs\mp4\Media Foundation .Net\MFLibv3_1\src.mfext\bin\Debug\MediaFoundation.Extension.dll
+E:\_cs\mp4\Media Foundation .Net\MFLibv3_1\src.mfext\bin\Debug\MediaFoundation.Extension.pdb
+E:\_cs\mp4\Media Foundation .Net\MFLibv3_1\src.mfext\bin\Debug\MediaFoundation.dll
+E:\_cs\mp4\Media Foundation .Net\MFLibv3_1\src.mfext\bin\Debug\MediaFoundation.pdb
+E:\_cs\mp4\Media Foundation .Net\MFLibv3_1\src.mfext\obj\Debug\MediaFoundation.Extension-2010.csprojResolveAssemblyReference.cache
+E:\_cs\mp4\Media Foundation .Net\MFLibv3_1\src.mfext\obj\Debug\MediaFoundation.Extension.dll
+E:\_cs\mp4\Media Foundation .Net\MFLibv3_1\src.mfext\obj\Debug\MediaFoundation.Extension.pdb
+E:\_cs\mp4\Media Foundation .Net\LIB\MediaFoundation.Extension.dll
+E:\_cs\mp4\Media Foundation .Net\LIB\MediaFoundation.Extension.pdb

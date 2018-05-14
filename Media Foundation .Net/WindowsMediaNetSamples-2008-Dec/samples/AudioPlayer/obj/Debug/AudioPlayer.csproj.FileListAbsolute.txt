@@ -1,0 +1,9 @@
+E:\_cs\mp4\Media Foundation .Net\WindowsMediaNetSamples-2008-Dec\samples\AudioPlayer\bin\Debug\AudioPlayer.exe
+E:\_cs\mp4\Media Foundation .Net\WindowsMediaNetSamples-2008-Dec\samples\AudioPlayer\bin\Debug\AudioPlayer.pdb
+E:\_cs\mp4\Media Foundation .Net\WindowsMediaNetSamples-2008-Dec\samples\AudioPlayer\bin\Debug\WindowsMediaLib.dll
+E:\_cs\mp4\Media Foundation .Net\WindowsMediaNetSamples-2008-Dec\samples\AudioPlayer\obj\Debug\AudioPlayer.csprojResolveAssemblyReference.cache
+E:\_cs\mp4\Media Foundation .Net\WindowsMediaNetSamples-2008-Dec\samples\AudioPlayer\obj\Debug\AudioPlayer.Form1.resources
+E:\_cs\mp4\Media Foundation .Net\WindowsMediaNetSamples-2008-Dec\samples\AudioPlayer\obj\Debug\AudioPlayer.Properties.Resources.resources
+E:\_cs\mp4\Media Foundation .Net\WindowsMediaNetSamples-2008-Dec\samples\AudioPlayer\obj\Debug\AudioPlayer.csproj.GenerateResource.Cache
+E:\_cs\mp4\Media Foundation .Net\WindowsMediaNetSamples-2008-Dec\samples\AudioPlayer\obj\Debug\AudioPlayer.exe
+E:\_cs\mp4\Media Foundation .Net\WindowsMediaNetSamples-2008-Dec\samples\AudioPlayer\obj\Debug\AudioPlayer.pdb

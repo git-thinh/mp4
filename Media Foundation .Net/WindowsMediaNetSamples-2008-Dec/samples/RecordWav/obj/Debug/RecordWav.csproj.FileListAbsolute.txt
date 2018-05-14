@@ -1,0 +1,9 @@
+E:\_cs\mp4\Media Foundation .Net\WindowsMediaNetSamples-2008-Dec\samples\RecordWav\bin\Debug\RecordWav.exe
+E:\_cs\mp4\Media Foundation .Net\WindowsMediaNetSamples-2008-Dec\samples\RecordWav\bin\Debug\RecordWav.pdb
+E:\_cs\mp4\Media Foundation .Net\WindowsMediaNetSamples-2008-Dec\samples\RecordWav\bin\Debug\WindowsMediaLib.dll
+E:\_cs\mp4\Media Foundation .Net\WindowsMediaNetSamples-2008-Dec\samples\RecordWav\obj\Debug\RecordWav.csprojResolveAssemblyReference.cache
+E:\_cs\mp4\Media Foundation .Net\WindowsMediaNetSamples-2008-Dec\samples\RecordWav\obj\Debug\RecordWav.Form1.resources
+E:\_cs\mp4\Media Foundation .Net\WindowsMediaNetSamples-2008-Dec\samples\RecordWav\obj\Debug\RecordWav.Properties.Resources.resources
+E:\_cs\mp4\Media Foundation .Net\WindowsMediaNetSamples-2008-Dec\samples\RecordWav\obj\Debug\RecordWav.csproj.GenerateResource.Cache
+E:\_cs\mp4\Media Foundation .Net\WindowsMediaNetSamples-2008-Dec\samples\RecordWav\obj\Debug\RecordWav.exe
+E:\_cs\mp4\Media Foundation .Net\WindowsMediaNetSamples-2008-Dec\samples\RecordWav\obj\Debug\RecordWav.pdb

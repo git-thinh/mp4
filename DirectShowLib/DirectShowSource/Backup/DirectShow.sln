@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DirectShow", "DirectShow.csproj", "{AB83B570-9C74-4CFF-9AAD-371CA819BBCA}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{AB83B570-9C74-4CFF-9AAD-371CA819BBCA}.Debug.ActiveCfg = Debug|.NET
+		{AB83B570-9C74-4CFF-9AAD-371CA819BBCA}.Debug.Build.0 = Debug|.NET
+		{AB83B570-9C74-4CFF-9AAD-371CA819BBCA}.Release.ActiveCfg = Release|.NET
+		{AB83B570-9C74-4CFF-9AAD-371CA819BBCA}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

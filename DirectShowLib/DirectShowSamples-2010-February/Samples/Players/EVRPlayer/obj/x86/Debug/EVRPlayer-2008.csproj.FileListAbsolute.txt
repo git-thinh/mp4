@@ -1,0 +1,4 @@
+E:\_cs\mp4\DirectShowLibV2-1\DirectShowSamples-2010-February\Samples\Players\EVRPlayer\obj\x86\Debug\EVRPlayer-2008.csprojResolveAssemblyReference.cache
+E:\_cs\mp4\DirectShowLibV2-1\DirectShowSamples-2010-February\Samples\Players\EVRPlayer\obj\x86\Debug\EVRPlayer.Form1.resources
+E:\_cs\mp4\DirectShowLibV2-1\DirectShowSamples-2010-February\Samples\Players\EVRPlayer\obj\x86\Debug\EVRPlayer.Properties.Resources.resources
+E:\_cs\mp4\DirectShowLibV2-1\DirectShowSamples-2010-February\Samples\Players\EVRPlayer\obj\x86\Debug\EVRPlayer-2008.csproj.GenerateResource.Cache

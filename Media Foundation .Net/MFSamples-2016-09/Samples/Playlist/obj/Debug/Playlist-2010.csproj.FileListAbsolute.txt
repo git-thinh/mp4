@@ -1,0 +1,11 @@
+E:\_cs\mp4\Media Foundation .Net\MFSamples-2016-09\Samples\Playlist\bin\Debug\Playlist.exe.config
+E:\_cs\mp4\Media Foundation .Net\MFSamples-2016-09\Samples\Playlist\bin\Debug\Playlist.exe
+E:\_cs\mp4\Media Foundation .Net\MFSamples-2016-09\Samples\Playlist\bin\Debug\Playlist.pdb
+E:\_cs\mp4\Media Foundation .Net\MFSamples-2016-09\Samples\Playlist\bin\Debug\MediaFoundation.dll
+E:\_cs\mp4\Media Foundation .Net\MFSamples-2016-09\Samples\Playlist\bin\Debug\MediaFoundation.Extension.dll
+E:\_cs\mp4\Media Foundation .Net\MFSamples-2016-09\Samples\Playlist\obj\Debug\Playlist-2010.csprojResolveAssemblyReference.cache
+E:\_cs\mp4\Media Foundation .Net\MFSamples-2016-09\Samples\Playlist\obj\Debug\Playlist.Form1.resources
+E:\_cs\mp4\Media Foundation .Net\MFSamples-2016-09\Samples\Playlist\obj\Debug\Playlist.Properties.Resources.resources
+E:\_cs\mp4\Media Foundation .Net\MFSamples-2016-09\Samples\Playlist\obj\Debug\Playlist-2010.csproj.GenerateResource.Cache
+E:\_cs\mp4\Media Foundation .Net\MFSamples-2016-09\Samples\Playlist\obj\Debug\Playlist.exe
+E:\_cs\mp4\Media Foundation .Net\MFSamples-2016-09\Samples\Playlist\obj\Debug\Playlist.pdb

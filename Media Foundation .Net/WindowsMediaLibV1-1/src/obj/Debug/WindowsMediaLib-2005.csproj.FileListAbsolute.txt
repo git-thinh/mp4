@@ -1,0 +1,4 @@
+E:\_cs\mp4\Media Foundation .Net\WindowsMediaLibV1-1\src\bin\Debug\WindowsMediaLib.dll
+E:\_cs\mp4\Media Foundation .Net\WindowsMediaLibV1-1\src\bin\Debug\WindowsMediaLib.pdb
+E:\_cs\mp4\Media Foundation .Net\WindowsMediaLibV1-1\src\obj\Debug\WindowsMediaLib.dll
+E:\_cs\mp4\Media Foundation .Net\WindowsMediaLibV1-1\src\obj\Debug\WindowsMediaLib.pdb
